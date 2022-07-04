@@ -5,9 +5,16 @@ using TMPro;
 public class StarCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI starCounter;
-    
+    private void Start()
+    {
+        starCounter.text = PlayerPrefs.GetInt("Stars", 0)+"";
+    }
     public void AddStar()
     {
-        starCounter.text = (int.Parse(starCounter.text) + 1) + "";
+        int stars = int.Parse(starCounter.text) + 1;
+        starCounter.text = stars + "";
+        PlayerPrefs.SetInt("Stars", stars);
+        PlayerPrefs.Save();
     }
+
 }

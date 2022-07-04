@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private ScoreCounter scoreCounter;
     [SerializeField] private StarCounter starCounter;
-
+    [SerializeField] private CongratulationText congratulationText;
     [SerializeField] private LevelManager levelManager;
     private bool isMovingToCenter;
     private int basketLayer, wallLayer, starLayer, bounced, PerfectCounter=2;
@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
         if (thisTransform.position.y< thisParent.position.y-3)
         {
             levelManager.ShowFailedScreen();
+            enabled = false;
         }
         if (isMovingToCenter)
         {
@@ -74,7 +75,19 @@ public class Ball : MonoBehaviour
         {
             thisParent = basket.GetParentForBall();
             thisTransform.parent = basket.GetParentForBall();
-            scoreCounter.AddScore((bounced+1) * PerfectCounter);
+            int score = (bounced + 1) * PerfectCounter;
+            scoreCounter.AddScore(score);
+            bool wasBounced=false;
+            if (bounced == 1)
+            {
+                wasBounced = true;
+            }
+            bool wasPerfect = false;
+            if (PerfectCounter > 1)
+            {
+                wasPerfect = true;
+            }
+            congratulationText.SpawnText(wasPerfect, wasBounced, score, GetPos());
             bounced = 0;
             PerfectCounter += 1;
         }

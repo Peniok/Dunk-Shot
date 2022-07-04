@@ -9,12 +9,14 @@ public class Star : MonoBehaviour
     Vector3 startPos, startScale;
     private float timeToMove, timeToScale;
     bool Getted;
+    int BallLayer;
     // Start is called before the first frame update
     void Start()
     {
         thisTransform.eulerAngles = Vector3.zero;
         startScale = thisTransform.localScale;
         startPos = thisTransform.position;
+        BallLayer = LayerMask.NameToLayer("Ball");
     }
 
     // Update is called once per frame
@@ -42,7 +44,10 @@ public class Star : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        thisCollider.enabled = false;
-        Getted = true;
+        if(collision.gameObject.layer== BallLayer)
+        {
+            thisCollider.enabled = false;
+            Getted = true;
+        }
     }
 }

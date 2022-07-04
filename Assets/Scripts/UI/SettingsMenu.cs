@@ -14,6 +14,7 @@ public class SettingsMenu : MonoBehaviour
         backButton.onClick.AddListener(HideSettigsMenu);
         soundButton.onClick.AddListener(SwitchSoundSettings);
         themeSwitcher.onClick.AddListener(SwitchThemeSettings);
+        
         if (PlayerPrefs.GetInt("Theme") == 1)
         {
             backGroundImage.color = blackTheme;
@@ -40,14 +41,15 @@ public class SettingsMenu : MonoBehaviour
         {
             soundButtonImage.color = Color.white;
             AudioListener.volume = 1;
-            PlayerPrefs.SetInt("SoundMute",1);
+            PlayerPrefs.SetInt("SoundMute", 1);
         }
         else
         {
             soundButtonImage.color = Color.red;
             AudioListener.volume = 0;
-            PlayerPrefs.GetInt("SoundMute",0);
+            PlayerPrefs.SetInt("SoundMute", 0);
         }
+        PlayerPrefs.Save();
     }
     void SwitchThemeSettings()
     {
@@ -63,6 +65,7 @@ public class SettingsMenu : MonoBehaviour
             themeSwitcherImage.color = Color.white;
             PlayerPrefs.SetInt("Theme",0);
         }
-            cameraMover.ChangeBack();
+        PlayerPrefs.Save();
+        cameraMover.ChangeBack();
     }
 }

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Vector2 lastDir;
     [SerializeField] private float force;
     private bool CanShoot=true;
+    [SerializeField] SoundController soundController;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
                     if (lastDir.magnitude >= 0.5f)
                     {
                         ball.Jump(ball.GetPos(), lastDir * force);
+                        soundController.PlayShootFromBasket();
                         CanShoot = false;
                     }
                     else

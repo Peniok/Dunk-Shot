@@ -19,13 +19,13 @@ public class CameraMover : MonoBehaviour
     void Update()
     {
         //thisTransform.position += new Vector3(0,ball.GetVelocity().y,0) * Time.deltaTime;//Vector3.up * Time.deltaTime * Mathf.Max(0.5f,( ball.GetPos().y - (thisTransform.position.y -2)));
-        if (ball.GetPos().y > thisTransform.position.y-1.5f)
+        if (ball.GetPos().y > thisTransform.position.y-2f)
         {
-            thisTransform.position += Vector3.up * Time.deltaTime * Mathf.Max(0.1f, ball.GetPos().y - (thisTransform.position.y - 1.5f));
+            thisTransform.position += Vector3.up * Time.deltaTime * Mathf.Max(0.1f, ball.GetPos().y - (thisTransform.position.y - 2));
         }
-        else if (ball.GetPos().y < thisTransform.position.y- 2.5f && ball.GetPos().y> minimumY)
+        else if (ball.GetPos().y < thisTransform.position.y- 2.2f && ball.GetPos().y> minimumY)
         {
-            thisTransform.position += Vector3.down * Time.deltaTime *  Mathf.Max(0.1f,thisTransform.position.y- 2.5f - ball.GetPos().y) ;
+            thisTransform.position += Vector3.down * Time.deltaTime *  Mathf.Max(0.1f,thisTransform.position.y- 2.2f - ball.GetPos().y) ;
         }
     }
     void CameraTakesNewLimits(bool newBasket, Basket basket)
