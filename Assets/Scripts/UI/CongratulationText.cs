@@ -35,18 +35,17 @@ public class CongratulationText : MonoBehaviour
         timeForAnim += Time.deltaTime;
         if (isBounced)
         {
-            bounceWord.position+= Vector3.up * 0.05f;
+            bounceWord.position+= Vector3.up * 0.01f;
             bounceWordText.color = new Color(bounceWordText.color.r, bounceWordText.color.g, bounceWordText.color.b, JumpLinearGraph(Mathf.Max(0, timeForAnim - 0.4f)));
         }
         if (isPerfect&&timeForAnim<1.2f)
         {
             perfectWordText.color = new Color(perfectWordText.color.r, perfectWordText.color.g, perfectWordText.color.b, JumpLinearGraph(Mathf.Max(0, timeForAnim -0.2f)));
-            perfectWord.position += Vector3.up * 0.05f;
+            perfectWord.position += Vector3.up * 0.01f;
         }
         if (timeForAnim < 1)
         {
-            numberWord.position += Vector3.up * 0.05f;
-            //Debug.Log(JumpLinearGraph(timeForAnim));
+            numberWord.position += Vector3.up * 0.01f;
             numberWordText.color = new Color(numberWordText.color.r, numberWordText.color.g, numberWordText.color.b, JumpLinearGraph(timeForAnim));
         }
         

@@ -35,7 +35,7 @@ public class Star : MonoBehaviour
         {
             timeToScale += Time.deltaTime;
             thisTransform.localScale = Vector3.Lerp(startScale, Vector3.zero, timeToScale);
-            thisTransform.eulerAngles += new Vector3(0,0,10*(timeToScale+0.3f)) ;
+            thisTransform.eulerAngles += new Vector3(0,0,2*(timeToScale+0.3f)) ;
             if (timeToScale > 1)
             {
                 gameObject.SetActive(false);

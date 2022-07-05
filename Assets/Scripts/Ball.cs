@@ -13,8 +13,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     private bool isMovingToCenter;
     private int basketLayer, wallLayer, starLayer, bounced, PerfectCounter=2;
-    //[SerializeField] Collider2D LastBasket;
-    //private float timeToIgnoreCollisions;
+
     private void Start()
     {
         basketLayer = LayerMask.NameToLayer("Basket");
@@ -44,12 +43,7 @@ public class Ball : MonoBehaviour
         thisTransform.position = pos;
         thisRigidbody.velocity = force;
         thisRigidbody.angularVelocity = -force.x*100;
-        //timeToIgnoreCollisions = Time.time + 0.2f;
     }
-    /*public void MoveToParent()
-    {
-        IsMovingToCenter = true;
-    }*/
     public Vector3 GetPos()
     {
         return thisTransform.position;
@@ -63,10 +57,6 @@ public class Ball : MonoBehaviour
         spriteRenderer.enabled = false;
         enabled = false;
     }
-    /*public void SetNewParent(Transform parent)
-    {
-        
-    }*/
     public void PrepareToNewJump(bool isNewBasket,Basket basket)
     {
         DisablePhysics();
@@ -92,22 +82,6 @@ public class Ball : MonoBehaviour
             PerfectCounter += 1;
         }
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(Time.time> timeToIgnoreCollisions)
-        {
-            if (collision != LastBasket)
-            {
-                LastBasket = collision;
-                EventManager.BallFallenIntoBasket(true, LastBasket.transform.parent);
-            }
-            else
-            {
-                EventManager.BallFallenIntoBasket(false, collision.transform.parent);
-            }
-            DisablePhysics();
-        }
-    }*/
     public void DisablePhysics()
     {
         //Debug.Log(name);
@@ -118,16 +92,11 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.layer == basketLayer)
         {
             PerfectCounter = 1;
-            //Debug.Log(collision.gameObject.name);
-            //Debug.Break();
-            //Debug.Log(collision.gameObject.name);
         }
         else if (collision.gameObject.layer == wallLayer)
         {
             bounced = 1;
-            //Debug.Log(collision.gameObject.name);
         }
-        //Debug.Log("Called");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -136,26 +105,4 @@ public class Ball : MonoBehaviour
             starCounter.AddStar();
         }
     }
-    /*private void OnDisable()
-    {
-        
-    }*/
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision != LastBasket)
-        {
-            LastBasket = collision;
-            EventManager.BallFallenIntoBasket(true);
-        }
-        else
-        {
-            EventManager.BallFallenIntoBasket(false);
-        }
-        thisRigidbody.simulated = false;
-    }*/
-    /*private void OnDisable()
-    {
-        Debug.Log(name);
-        EventManager.OnBallFallenIntoBasket -= PrepareToNewJump;
-    }*/
 }

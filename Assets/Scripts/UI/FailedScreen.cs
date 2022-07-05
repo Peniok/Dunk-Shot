@@ -8,7 +8,6 @@ public class FailedScreen : MonoBehaviour
     [SerializeField] List<Vector3> startScale;
     [SerializeField] private Button restartButton, settingsMenu;
     [SerializeField] private GameObject settingsMenuGameObject;
-    //[SerializeField] private LevelManager levelManager;
 
     private bool showScreen;
     private float timeToShow=1;

@@ -18,7 +18,6 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
-        //thisTransform.position += new Vector3(0,ball.GetVelocity().y,0) * Time.deltaTime;//Vector3.up * Time.deltaTime * Mathf.Max(0.5f,( ball.GetPos().y - (thisTransform.position.y -2)));
         if (ball.GetPos().y > thisTransform.position.y-2f)
         {
             thisTransform.position += Vector3.up * Time.deltaTime * Mathf.Max(0.1f, ball.GetPos().y - (thisTransform.position.y - 2));
@@ -31,7 +30,6 @@ public class CameraMover : MonoBehaviour
     void CameraTakesNewLimits(bool newBasket, Basket basket)
     {
         minimumY = basket.GetParent().position.y-1;
-        //Debug.Break();
     }
     public void ChangeBack()
     {

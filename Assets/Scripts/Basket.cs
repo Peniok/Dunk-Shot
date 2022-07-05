@@ -26,20 +26,11 @@ public class Basket : MonoBehaviour
     {
         if (BallEntered == false)
         {
-            //Debug.Log("name");
-            //Debug.Log(collision.name);
-
-            //Debug.Break();
             collision.GetComponent<Ball>().PrepareToNewJump(newBasket, this);
             colliderOfBasket.enabled = false;
             EventManager.BallFallenIntoBasket(newBasket, this);
             newBasket = false;
             BallEntered = true;
-
-            //ball.PrepareToNewJump
-            /*ball.DisablePhysics();
-            ball.MoveToParent();
-            ball.SetNewParent(parentTransform);*/
         }
         else
         {
@@ -60,7 +51,6 @@ public class Basket : MonoBehaviour
     {
         if (basket.GetParent() != parentTransform && newBasket==false)
         {
-            //Debug.Log(name);
             parentTransform.gameObject.SetActive(false);
         }
     }

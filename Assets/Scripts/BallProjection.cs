@@ -13,7 +13,6 @@ public class BallProjection : MonoBehaviour
      private Ball ballCloned;
     [SerializeField] private GameObject ballGameObject;
 
-    //[SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private GameObject PointPrefab;
     List<Transform> PointsToShow = new List<Transform>();
     List<Vector3> AllPoses = new List<Vector3>();
@@ -57,7 +56,6 @@ public class BallProjection : MonoBehaviour
     public void CalculateProjection(Vector3 pos, Vector3 force)
     {
         ballCloned.Jump(pos, force);
-        //lineRenderer.positionCount = physicsFramesToCalculate;
         for (int i = 0; i < physicsFramesToCalculate; i++)
         {
             physicsScene.Simulate(Time.fixedDeltaTime*2);
@@ -65,7 +63,6 @@ public class BallProjection : MonoBehaviour
             AllPoses[i] = ballCloned.GetPos();
 
         }
-        //Debug.Log("CalledfromThis");
         ballCloned.DisablePhysics();
     }
     public void StopCalculating()

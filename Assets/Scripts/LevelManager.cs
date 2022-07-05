@@ -6,8 +6,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] Levels;
     [SerializeField] private FailedScreen failedScreen;
     [SerializeField] SoundController soundController;
-    //[SerializeField] private 
-    // Start is called before the first frame update
+    [SerializeField] private GameObject pauseMenu;
     void Start()
     {
         EventManager.OnBallFallenIntoBasket += BallGotIntoBasket;
@@ -15,17 +14,10 @@ public class LevelManager : MonoBehaviour
 
     public void ShowFailedScreen()
     {
+        pauseMenu.gameObject.SetActive(false);
         soundController.PlayEndOfLevel();
         failedScreen.StartShowScreen();
     }
-    /*public void ShowPauseScreen()
-    {
-
-    }
-    public void ShowMainScreen()
-    {
-
-    }*/
     public static void RestartLevel()
     {
         Time.timeScale = 1;
