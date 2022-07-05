@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
                     if (lastDir.magnitude >= 0.5f)
                     {
+                        ballProjection.CalculateProjection(ball.GetPos(), lastDir * force);
                         ball.Jump(ball.GetPos(), lastDir * force);
                         soundController.PlayShootFromBasket();
                         CanShoot = false;
